@@ -1,14 +1,27 @@
 import React from "react";
 import Card from "./Card";
 import contacts from "../contacts";
-import Avatar from "./Avatar";
+
+function createCard(contact) {
+  return (
+    <Card
+      key={contact.id}
+      name={contact.name}
+      img={contact.imgURL}
+      tel={contact.phone}
+      email={contact.email}
+    />
+  );
+}
 
 function App() {
   return (
     <div>
+    <Avatar img="https://cdnb.artstation.com/p/assets/images/images/026/202/851/4k/daniel-hiew-aatrox-002.jpg?1588167168" />
       <h1 className="heading">My Contacts</h1>
-      <Avatar img="https://cdnb.artstation.com/p/assets/images/images/026/202/851/4k/daniel-hiew-aatrox-002.jpg?1588167168" />
-      <Card
+      {contacts.map(createCard)}
+
+      {/* <Card
         name={contacts[0].name}
         img={contacts[0].imgURL}
         tel={contacts[0].phone}
@@ -25,9 +38,10 @@ function App() {
         img={contacts[2].imgURL}
         tel={contacts[2].phone}
         email={contacts[2].email}
-      />
+      /> */}
     </div>
   );
 }
 
 export default App;
+
